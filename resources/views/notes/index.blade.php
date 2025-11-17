@@ -15,7 +15,7 @@
         </button>
     </div>
 
-     @foreach($notes as $note)
+    @foreach($notes as $note)
         <div style="border: 1px solid black; margin-bottom: 10px; padding: 5px;">
             <h3>{{ $note->title }}</h3>
             <p>{{ $note->text }}</p>
