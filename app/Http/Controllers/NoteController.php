@@ -30,7 +30,6 @@ class NoteController extends Controller
     public function store(Request $request)
     {
         Note::create($request->all());
-
         return redirect()->route('notes.index');
     }
 
@@ -39,7 +38,7 @@ class NoteController extends Controller
      */
     public function show(Note $note)
     {
-        //
+        return view('notes.show', compact('note'));
     }
 
     /**
@@ -47,7 +46,7 @@ class NoteController extends Controller
      */
     public function edit(Note $note)
     {
-        //
+        return view('notes.edit', compact('note'));
     }
 
     /**
@@ -55,7 +54,8 @@ class NoteController extends Controller
      */
     public function update(Request $request, Note $note)
     {
-        //
+        $note->update($request->all());
+        return redirect()->route('notes.show', $note)->with('success', 'Game atualizado com sucesso!');
     }
 
     /**
