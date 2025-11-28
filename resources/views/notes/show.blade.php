@@ -8,6 +8,7 @@
 <body>
     <h2>{{ $note->title }}</h2>
     <p>{{ $note->text }}</p>
+    
     <a href="{{ route('notes.edit', $note) }}">Editar</a>
     <form action="{{ route('notes.destroy', $note) }}" method="post">
         @method("delete")
