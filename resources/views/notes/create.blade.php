@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Criar nova nota</title>
+    <title>Daily Notes</title>
 </head>
 <body>
     <h1>Criar nova nota</h1>
