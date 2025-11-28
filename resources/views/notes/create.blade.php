@@ -14,5 +14,7 @@
         <input type="text" name="text" placeholder="Escreva algo...">
         <input type="submit" value="Salvar">
     </form>
+    
+    <a href="{{ route('notes.index') }}">Voltar</a>
 </body>
 </html>

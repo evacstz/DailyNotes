@@ -14,5 +14,7 @@
         @csrf
         <input type="submit" value="Deletar">
     </form>
+    
+    <a href="{{ route('notes.index') }}">Voltar</a>
 </body>
 </html>

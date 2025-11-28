@@ -21,5 +21,7 @@
         
         <input type="submit" value="Salvar">
     </form>
+
+    <a href="{{ route('events.index') }}">Voltar</a>
 </body>
 </html>
