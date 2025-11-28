@@ -21,9 +21,9 @@ Route::resource('/events', EventController::class);
 Route::resource('/checklists', ChecklistController::class);
 // CHECKLIST ITEMS
 Route::post('/checklists/{checklist}/items', [ChecklistItemController::class, 'store'])->name('items.store');
-Route::put('/items/{item}', [ChecklistItemController::class, 'update'])->name('items.update');
-Route::delete('/items/{item}', [ChecklistItemController::class, 'destroy'])->name('items.destroy');
-Route::patch('/items/{item}/toggle', [ChecklistItemController::class, 'toggle'])->name('items.toggle');
+Route::put('/checklists/items/{item}', [ChecklistItemController::class, 'update'])->name('items.update');
+Route::delete('/checklists/items/{item}', [ChecklistItemController::class, 'destroy'])->name('items.destroy');
+Route::patch('/checklists/{checklist}/items/toggle', [ChecklistItemController::class, 'toggle'])->name('items.toggle');
 
 // BREEZE
 Route::get('/dashboard', function () {
