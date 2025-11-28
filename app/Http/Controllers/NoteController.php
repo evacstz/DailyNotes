@@ -55,7 +55,7 @@ class NoteController extends Controller
     public function update(Request $request, Note $note)
     {
         $note->update($request->all());
-        return redirect()->route('notes.show', $note)->with('success', 'Game atualizado com sucesso!');
+        return redirect()->route('notes.show', $note);
     }
 
     /**
