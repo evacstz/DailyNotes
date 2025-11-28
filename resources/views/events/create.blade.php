@@ -11,13 +11,13 @@
     <form action="{{ route('events.store') }}" method="post">
         @csrf
         <label for="title">Evento:</label>
-        <input type="text" name="title">
+        <input type="text" name="title" required>
 
         <label for="date">Data:</label>
-        <input type="date" name="date">
+        <input type="date" name="date" required>
 
         <label for="time">Hora:</label>
-        <input type="time" name="time">
+        <input type="time" name="time" required>
         
         <input type="submit" value="Salvar">
     </form>

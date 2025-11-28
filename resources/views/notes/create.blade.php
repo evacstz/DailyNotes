@@ -10,8 +10,8 @@
 
     <form action="{{ route('notes.store') }}" method="post">
         @csrf
-        <input type="text" name="title" placeholder="Título">
-        <input type="text" name="text" placeholder="Escreva algo...">
+        <input type="text" name="title" placeholder="Título" required>
+        <input type="text" name="text" placeholder="Escreva algo..." required>
         <input type="submit" value="Salvar">
     </form>
     
