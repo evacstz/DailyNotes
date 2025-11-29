@@ -20,7 +20,7 @@
         <label for="time">Hora:</label>
         <input type="time" name="time" value="{{ $event->time }}">
 
-        <input type="submit" value="Salvar">
+        <input type="submit" value="Salvar alterações">
     </form>
 
     <a href="{{ route('events.index') }}">Voltar</a>

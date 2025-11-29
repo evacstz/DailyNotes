@@ -24,7 +24,7 @@
 
         <button type="button" onclick="addItem()">Novo item</button>
 
-        <input type="submit" value="Salvar">
+        <input type="submit" value="Salvar alterações">
     </form>
 
     <a href="{{ route('checklists.index') }}">Voltar</a>
