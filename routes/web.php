@@ -23,6 +23,9 @@ Route::resource('/checklists', ChecklistController::class);
 Route::patch('/items/{item}/toggle', [ChecklistItemController::class, 'toggle'])->name('items.toggle');
 Route::delete('/items/{item}', [ChecklistItemController::class, 'destroy'])->name('items.destroy');
 
+// REMINDER
+Route::resource('/reminders', ReminderController::class);
+
 // BREEZE
 Route::get('/dashboard', function () {
     return view('dashboard');
