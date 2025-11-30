@@ -7,6 +7,7 @@ use App\Http\Controllers\EventController;
 use App\Http\Controllers\ChecklistController;
 use App\Http\Controllers\ChecklistItemController;
 use App\Http\Controllers\ReminderController;
+use App\Http\Controllers\WishlistController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -26,6 +27,9 @@ Route::delete('/items/{item}', [ChecklistItemController::class, 'destroy'])->nam
 
 // REMINDER
 Route::resource('/reminders', ReminderController::class);
+
+// WISHLIST
+Route::resource('/wishlists', WishlistController::class);
 
 // BREEZE
 Route::get('/dashboard', function () {
