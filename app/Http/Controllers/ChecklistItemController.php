@@ -10,7 +10,7 @@ class ChecklistItemController extends Controller
 {
     public function destroy(ChecklistItem $item)
     {
-        $checklist = $item->checklist; // Salva a ref antes de deletar para o redirect
+        $checklist = $item->checklist;
         $item->delete();
         return redirect()->route('checklists.show', $checklist);
     }

@@ -42,7 +42,7 @@
                 <h1 class="text-3xl font-bold text-gray-900">{{ $checklist->title }}</h1>
             </div>
             
-            <a href="{{ route('checklists.edit', $checklist) }}" class="text-sm font-medium text-pink-600 hover:text-pink-800 transition-colors mb-1">
+            <a href="{{ route('checklists.edit', $checklist) }}" class="bg-pink-600 hover:bg-pink-700 text-white text-sm px-8 py-2 rounded shadow-sm hover:shadow transition-all font-medium cursor-pointer">
                 Editar lista
             </a>
         </div>
@@ -74,7 +74,7 @@
         </ul>
 
         <div class="mt-10 pt-6 border-t border-gray-200 flex justify-end">
-            <a href="{{ route('checklists.index') }}" class="bg-pink-600 hover:bg-pink-700 text-white px-6 py-2 rounded shadow-sm hover:shadow transition-all text-sm font-medium">
+            <a href="{{ route('checklists.index') }}" class="text-pink-600 hover:text-pink-800 font-medium transition-colors"">
                 Voltar
             </a>
         </div>
