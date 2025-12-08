@@ -27,4 +27,14 @@ class ChecklistRequest extends FormRequest
             'items.*' => 'required|string|distinct',
         ];
     }
+
+    public function messages(): array
+    {
+        return [
+            'title.required' => 'Por favor, dê um título para sua lista.',
+            'title.max' => 'O título não pode ter mais de 255 caracteres.',
+            'items.required' => 'Sua lista precisa ter itens.',
+            'items.min' => 'Por favor, adicione pelo menos um item à sua lista.',
+        ];
+    }
 }

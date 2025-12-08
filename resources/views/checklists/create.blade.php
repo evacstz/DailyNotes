@@ -46,13 +46,19 @@
                 @csrf
                 <div class="flex flex-col gap-2">
                     <label for="title" class="text-sm font-semibold text-gray-700">Título da Lista</label>
-                    <input type="text" name="title" id="title" placeholder="Ex.: Lista de compras, Atividades da escola..." required class="w-full border border-pink-300 rounded-lg p-3 text-gray-700 focus:outline-none focus:border-pink-500 focus:ring-1 focus:ring-pink-500 transition-colors">
+                    <input type="text" name="title" id="title" placeholder="Ex.: Lista de compras, Atividades da escola..." class="w-full border border-pink-300 rounded-lg p-3 text-gray-700 focus:outline-none focus:border-pink-500 focus:ring-1 focus:ring-pink-500 transition-colors">
+                    @error('title')
+                        <span class="text-red-500 text-s font-medium">{{ $message }}</span>
+                    @enderror
                 </div>
 
                 <div class="flex flex-col gap-2">
                     <label class="text-sm font-semibold text-gray-700">Itens</label>
                     <div id="items" class="flex flex-col gap-3">
-                        <input type="text" name="items[]" placeholder="Novo item" required class="w-full border border-pink-300 rounded-lg p-3 text-gray-700 focus:outline-none focus:border-pink-500 focus:ring-1 focus:ring-pink-500 transition-colors">
+                        <input type="text" name="items[]" placeholder="Novo item" class="w-full border border-pink-300 rounded-lg p-3 text-gray-700 focus:outline-none focus:border-pink-500 focus:ring-1 focus:ring-pink-500 transition-colors">
+                        @error('items')
+                            <span class="text-red-500 text-s font-medium">{{ $message }}</span>
+                        @enderror
                     </div>
                     <button type="button" onclick="addItem()" class="mt-2 text-pink-600 hover:text-pink-800 text-sm font-medium flex items-center transition-colors w-max">+ Adicionar outro item</button>
                 </div>
@@ -73,7 +79,7 @@
             input.type = 'text';
             input.name = 'items[]';
             input.placeholder = 'Novo item';
-            input.required = true;
+            input.= true;
             input.className = 'w-full border border-pink-300 rounded-lg p-3 text-gray-700 focus:outline-none focus:border-pink-500 focus:ring-1 focus:ring-pink-500 transition-colors';            
             container.appendChild(input);
         }
