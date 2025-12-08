@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Checklist;
+use App\Http\Requests\ChecklistRequest;
 use Illuminate\Http\Request;
 
 class ChecklistController extends Controller
@@ -27,13 +28,15 @@ class ChecklistController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(ChecklistRequest $request)
     {
+        $validated = $request->validated();
+
         $checklist = Checklist::create([
-            'title' => $request->title
+            'title' => $validated['title']
         ]);
 
-        foreach ($request->items as $itemText) {
+        foreach ($validated['items'] as $itemText) {
             $checklist->items()->create([
                 'text' => $itemText,
                 'concluido' => false
@@ -62,18 +65,17 @@ class ChecklistController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Checklist $checklist)
+    public function update(ChecklistRequest $request, Checklist $checklist)
     {
+        $validated = $request->validated();
+
         $checklist->update([
-            'title' => $request->title
+            'title' => $validated['title']
         ]);
 
-        $submittedItems = $request->items ?? [];
+        $submittedItems = $validated['items'] ?? [];
 
-        foreach ($submittedItems as $index => $itemText) {
-            $itemText = trim($itemText);
-            if ($itemText === '') continue;
-
+        foreach ($validated['items'] as $index => $itemText) {
             if (isset($checklist->items[$index])) {
                 $checklist->items[$index]->update([
                     'text' => $itemText
