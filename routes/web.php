@@ -10,33 +10,35 @@ use App\Http\Controllers\ReminderController;
 use App\Http\Controllers\WishlistController;
 
 Route::get('/', function () {
-    return view('welcome');
+    if (auth()->check()) {
+        return redirect()->route('notes.index');
+    }
+    return redirect()->route('register');
 });
 
-// NOTES
-Route::resource('/notes', NoteController::class);
+Route::middleware(['auth', 'verified'])->group(function () {
+    Route::get('/dashboard', function () {
+        return redirect()->route('notes.index');
+    })->name('dashboard');
 
-// EVENTS
-Route::resource('/events', EventController::class);
+    // NOTES
+    Route::resource('/notes', NoteController::class);
 
-// CHECKLIST
-Route::resource('/checklists', ChecklistController::class);
-// CHECKLIST ITEM
-Route::patch('/items/{item}/toggle', [ChecklistItemController::class, 'toggle'])->name('items.toggle');
-Route::delete('/items/{item}', [ChecklistItemController::class, 'destroy'])->name('items.destroy');
+    // EVENTS
+    Route::resource('/events', EventController::class);
 
-// REMINDER
-Route::resource('/reminders', ReminderController::class);
+    // CHECKLISTS
+    Route::resource('/checklists', ChecklistController::class);
+    // CHECKLIST ITEMS
+    Route::patch('/items/{item}/toggle', [ChecklistItemController::class, 'toggle'])->name('items.toggle');
+    Route::delete('/items/{item}', [ChecklistItemController::class, 'destroy'])->name('items.destroy');
 
-// WISHLIST
-Route::resource('/wishlists', WishlistController::class);
+    // REMINDERS
+    Route::resource('/reminders', ReminderController::class);
 
-// BREEZE
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+    // WISHLIST
+    Route::resource('/wishlists', WishlistController::class);
 
-Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
