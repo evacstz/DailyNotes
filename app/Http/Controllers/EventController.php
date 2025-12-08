@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Event;
+use App\Http\Requests\EventRequest;
 use Illuminate\Http\Request;
 
 class EventController extends Controller
@@ -27,9 +28,9 @@ class EventController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(EventRequest $request)
     {
-        Event::create($request->all());
+        Event::create($request->validated());
         return redirect()->route('events.index');
     }
 
@@ -52,9 +53,9 @@ class EventController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Event $event)
+    public function update(EventRequest $request, Event $event)
     {
-        $event->update($request->all());
+        $event->update($request->validated());
         return redirect()->route('events.index', $event);
     }
 
