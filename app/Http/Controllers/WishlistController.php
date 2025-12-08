@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Wishlist;
+use App\Http\Requests\WishlistRequest;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\Request;
 
 class WishlistController extends Controller
@@ -26,13 +28,16 @@ class WishlistController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(WishlistRequest $request)
     {
-        $imagePath = $request->file('image')->store('wishlists', 'public');
-        Wishlist::create([
-            'name' => $request->name,
-            'image' => $imagePath
-        ]);
+        $validated = $request->validated();
+        if ($request->hasFile('image')) {
+            $validated['image'] = $request->file('image')->store('wishlists', 'public');
+        } else {
+            $validated['image'] = null;
+        }
+
+        Wishlist::create($validated);
         return redirect()->route('wishlists.index');
     }
 
@@ -55,24 +60,31 @@ class WishlistController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Wishlist $wishlist)
+    public function update(WishlistRequest $request, Wishlist $wishlist)
     {
-        $data = ['name' => $request->name];
-
-        if ($request->hasFile('image')) {            
-            $data['image'] = $request->file('image')->store('wishlists', 'public');
+        $validated = $request->validated();
+        if ($request->hasFile('image')) {
+            if ($wishlist->image) {
+                Storage::disk('public')->delete($wishlist->image);
+            }
+            
+            $validated['image'] = $request->file('image')->store('wishlists', 'public');
+        } else {
+            unset($validated['image']);
         }
 
-        $wishlist->update($data);
-
+        $wishlist->update($validated);
         return redirect()->route('wishlists.index');
-        }
-
+    }
     /**
      * Remove the specified resource from storage.
      */
     public function destroy(Wishlist $wishlist)
     {
+        if ($wishlist->image) {
+            Storage::disk('public')->delete($wishlist->image);
+        }
+
         $wishlist->delete();
         return redirect()->route('wishlists.index');
     }
