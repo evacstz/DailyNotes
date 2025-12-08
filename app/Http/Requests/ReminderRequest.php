@@ -26,4 +26,12 @@ class ReminderRequest extends FormRequest
             'time' => 'nullable',
         ];
     }
+
+    public function messages(): array
+    {
+        return [
+            'text.required' => 'Seu lembrete não pode ficar vazio.',
+            'text.max' => 'O lembrete não pode ter mais de 255 caracteres.',
+        ];
+    }
 }

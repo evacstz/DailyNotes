@@ -31,6 +31,7 @@ class NoteRequest extends FormRequest
     {
         return [
             'title.required' => 'Por favor, dê um título para sua nota.',
+            'title.max' => 'O título não pode ter mais de 255 caracteres.',
             'text.required' => 'A nota não pode ficar vazia.',
         ];
     }
