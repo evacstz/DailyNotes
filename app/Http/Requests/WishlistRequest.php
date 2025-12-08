@@ -26,4 +26,12 @@ class WishlistRequest extends FormRequest
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
         ];
     }
+
+    public function messages(): array
+    {
+        return [
+            'name.required' => 'O nome do seu item desejado não pode ficar vazio.',
+            'name.max' => 'O nome não pode ter mais de 255 caracteres.',
+        ];
+    }
 }

@@ -46,7 +46,10 @@
                 @csrf                
                 <div class="flex flex-col gap-2">
                     <label for="name" class="text-sm font-semibold text-gray-700">Nome do item</label>
-                    <input type="text" name="name" id="name" placeholder="Ex.: Perfume Floratta Red, Camisa do Vasco..." required class="w-full border border-pink-300 rounded-lg p-3 text-gray-700 focus:outline-none focus:border-pink-500 focus:ring-1 focus:ring-pink-500 transition-colors">
+                    <input type="text" name="name" id="name" placeholder="Ex.: Perfume Floratta Red, Camisa do Vasco..." class="w-full border border-pink-300 rounded-lg p-3 text-gray-700 focus:outline-none focus:border-pink-500 focus:ring-1 focus:ring-pink-500 transition-colors">
+                    @error('name')
+                        <span class="text-red-500 text-s font-medium">{{ $message }}</span>
+                    @enderror
                 </div>
 
                 <div class="flex flex-col gap-2">
