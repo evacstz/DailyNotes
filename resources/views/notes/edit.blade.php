@@ -49,7 +49,7 @@
                 </div>
 
                 <div class="flex justify-between items-center pt-4 border-t border-gray-100 mt-2">                    
-                    <a href="{{ route('notes.index') }}" class="text-pink-600 hover:text-pink-800 font-medium transition-colors">Voltar</a>
+                    <a href="{{ route('notes.show', $note) }}" class="text-pink-600 hover:text-pink-800 font-medium transition-colors">Voltar</a>
                     <input type="submit" value="Salvar alterações" class="bg-pink-600 hover:bg-pink-700 text-white px-8 py-2 rounded shadow-sm hover:shadow transition-all font-medium cursor-pointer">
                 </div>
             </form>
