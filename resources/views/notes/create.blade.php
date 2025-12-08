@@ -47,12 +47,18 @@
                 @csrf                
                 <div class="flex flex-col gap-2">
                     <label for="title" class="text-sm font-semibold text-gray-700">Título</label>
-                    <input type="text" name="title" id="title" placeholder="Digite o título da nota..." required class="w-full border border-pink-300 rounded-lg p-3 text-gray-700 focus:outline-none focus:border-pink-500 focus:ring-1 focus:ring-pink-500 transition-colors">
+                    <input type="text" name="title" id="title" placeholder="Digite o título da nota..." value="{{ old('title') }}" class="w-full border border-pink-300 rounded-lg p-3 text-gray-700 focus:outline-none focus:border-pink-500 focus:ring-1 focus:ring-pink-500 transition-colors">
+                    @error('title')
+                        <span class="text-red-500 text-s font-medium">{{ $message }}</span>
+                    @enderror
                 </div>
 
                 <div class="flex flex-col gap-2">
                     <label for="text" class="text-sm font-semibold text-gray-700">Texto</label>
-                    <textarea name="text" id="text" placeholder="Escreva algo..." required class="w-full h-64 border border-pink-300 rounded-lg p-3 text-gray-700 focus:outline-none focus:border-pink-500 focus:ring-1 focus:ring-pink-500 transition-colors resize-none"></textarea>
+                    <textarea name="text" id="text" placeholder="Escreva algo..." class="w-full h-64 border border-pink-300 rounded-lg p-3 text-gray-700 focus:outline-none focus:border-pink-500 focus:ring-1 focus:ring-pink-500 transition-colors resize-none"></textarea>
+                    @error('text')
+                        <span class="text-red-500 text-s font-medium">{{ $message }}</span>
+                    @enderror
                 </div>
 
                 <div class="flex justify-between items-center pt-4 border-t border-gray-100 mt-2">                    

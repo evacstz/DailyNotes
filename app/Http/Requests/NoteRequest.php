@@ -26,4 +26,12 @@ class NoteRequest extends FormRequest
             'text'=> 'required|string',
         ];
     }
+
+    public function messages(): array
+    {
+        return [
+            'title.required' => 'Por favor, dê um título para sua nota.',
+            'text.required' => 'A nota não pode ficar vazia.',
+        ];
+    }
 }
