@@ -33,7 +33,7 @@
 
     <main class="max-w-4xl mx-auto py-10 px-4">
         <div class="bg-white border border-pink-300 rounded-lg shadow-sm p-6 sm:p-8">            
-            <h1 class="text-2xl font-bold text-gray-900 mb-6 uppercase">Editar Lista</h1>
+            <h1 class="text-2xl font-bold text-gray-900 mb-6">EDITAR LISTA</h1>
             <form action="{{ route('checklists.update', $checklist) }}" method="POST" class="flex flex-col gap-6">
                 @csrf
                 @method('PUT')
