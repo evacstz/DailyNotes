@@ -27,4 +27,14 @@ class EventRequest extends FormRequest
             'time' => 'required',
         ];
     }
+
+    public function messages(): array
+    {
+        return [
+            'title.required' => 'Por favor, dê um título para seu evento.',
+            'title.max' => 'O título não pode ter mais de 255 caracteres.',
+            'date.required' => 'Seu evento precisa de uma data.',
+            'time.required' => 'Seu evento precisa de um horário.',
+        ];
+    }
 }

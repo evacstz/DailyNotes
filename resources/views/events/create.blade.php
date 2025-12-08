@@ -46,18 +46,27 @@
                 @csrf                
                 <div class="flex flex-col gap-2">
                     <label for="title" class="text-sm font-semibold text-gray-700">Evento</label>
-                    <input type="text" name="title" id="title" placeholder="Ex.: Aniversário da Ana" required class="w-full border border-pink-300 rounded-lg p-3 text-gray-700 focus:outline-none focus:border-pink-500 focus:ring-1 focus:ring-pink-500 transition-colors">
+                    <input type="text" name="title" id="title" placeholder="Ex.: Aniversário da Ana" class="w-full border border-pink-300 rounded-lg p-3 text-gray-700 focus:outline-none focus:border-pink-500 focus:ring-1 focus:ring-pink-500 transition-colors">
+                    @error('title')
+                        <span class="text-red-500 text-s font-medium">{{ $message }}</span>
+                    @enderror
                 </div>
 
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">  
                     <div class="flex flex-col gap-2">
                         <label for="date" class="text-sm font-semibold text-gray-700">Data</label>
-                        <input type="date" name="date" id="date" required class="w-full border border-pink-300 rounded-lg p-3 text-gray-700 focus:outline-none focus:border-pink-500 focus:ring-1 focus:ring-pink-500 transition-colors">
+                        <input type="date" name="date" id="date" class="w-full border border-pink-300 rounded-lg p-3 text-gray-700 focus:outline-none focus:border-pink-500 focus:ring-1 focus:ring-pink-500 transition-colors">
+                        @error('date')
+                            <span class="text-red-500 text-s font-medium">{{ $message }}</span>
+                        @enderror
                     </div>
 
                     <div class="flex flex-col gap-2">
                         <label for="time" class="text-sm font-semibold text-gray-700">Hora</label>
-                        <input type="time" name="time" id="time" required class="w-full border border-pink-300 rounded-lg p-3 text-gray-700 focus:outline-none focus:border-pink-500 focus:ring-1 focus:ring-pink-500 transition-colors">
+                        <input type="time" name="time" id="time" class="w-full border border-pink-300 rounded-lg p-3 text-gray-700 focus:outline-none focus:border-pink-500 focus:ring-1 focus:ring-pink-500 transition-colors">
+                        @error('time')
+                            <span class="text-red-500 text-s font-medium">{{ $message }}</span>
+                        @enderror
                     </div>
                 </div>
 
