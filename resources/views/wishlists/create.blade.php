@@ -43,8 +43,8 @@
                 </div>
 
                 <div class="flex flex-col gap-2">
-                    <label for="image" class="text-sm font-semibold text-gray-700">Foto do Produto (Opcional)</label>
-                    <input type="file" name="image" id="image" accept="image/*" class="block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-pink-50 file:text-pink-700 hover:file:bg-pink-100 border border-pink-300 rounded-lg cursor-pointer p-2">
+                    <label for="image" class="text-sm font-semibold text-gray-700">Foto do produto (Opcional)</label>
+                    <input type="file" name="image" id="image" accept="image/*" class="block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-pink-50 file:text-pink-700 border border-pink-300 rounded-lg cursor-pointer p-2">
                 </div>
 
                 <div class="flex justify-between items-center pt-4 border-t border-gray-100 mt-2">  
