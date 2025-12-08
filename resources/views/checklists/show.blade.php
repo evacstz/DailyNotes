@@ -4,13 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Daily Notes</title>
-    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    
-    <script src="https://cdn.tailwindcss.com"></script>
-    
+    <script src="https://cdn.tailwindcss.com"></script>  
     <style>
         body { font-family: 'Montserrat', sans-serif; }
     </style>
@@ -41,10 +38,7 @@
             <div>
                 <h1 class="text-3xl font-bold text-gray-900">{{ $checklist->title }}</h1>
             </div>
-            
-            <a href="{{ route('checklists.edit', $checklist) }}" class="bg-pink-600 hover:bg-pink-700 text-white text-sm px-8 py-2 rounded shadow-sm hover:shadow transition-all font-medium cursor-pointer">
-                Editar lista
-            </a>
+            <a href="{{ route('checklists.edit', $checklist) }}" class="bg-pink-600 hover:bg-pink-700 text-white text-sm px-8 py-2 rounded shadow-sm hover:shadow transition-all font-medium cursor-pointer">Editar lista</a>
         </div>
 
         <ul class="space-y-1">
@@ -57,28 +51,21 @@
                             <input type="checkbox" onchange="this.form.submit()" class="w-5 h-5 border-gray-300 rounded cursor-pointer" {{ $item->concluido ? 'checked' : '' }}>
                         </form>
 
-                        <span class="text-lg {{ $item->concluido ? 'line-through text-gray-400' : 'text-gray-800' }}">
-                            {{ $item->text }}
-                        </span>
+                        <span class="text-lg {{ $item->concluido ? 'line-through text-gray-400' : 'text-gray-800' }}">{{ $item->text }}</span>
                     </div>
 
                     <form action="{{ route('items.destroy', $item) }}" method="POST">
                         @csrf
                         @method('DELETE')
-                        <button type="submit" class="text-sm font-medium text-gray-300 group-hover:text-red-500 transition-colors cursor-pointer" onclick="return confirm('Tem certeza que deseja deletar este item?')">
-                            Deletar
-                        </button>
+                        <button type="submit" class="text-sm font-medium text-gray-300 group-hover:text-red-500 transition-colors cursor-pointer" onclick="return confirm('Tem certeza que deseja deletar este item?')">Deletar</button>
                     </form>
                 </li>
             @endforeach
         </ul>
 
         <div class="mt-10 pt-6 border-t border-gray-200 flex justify-end">
-            <a href="{{ route('checklists.index') }}" class="text-pink-600 hover:text-pink-800 font-medium transition-colors"">
-                Voltar
-            </a>
+            <a href="{{ route('checklists.index') }}" class="text-pink-600 hover:text-pink-800 font-medium transition-colors"">Voltar</a>
         </div>
-
     </main>
 </body>
 </html>
