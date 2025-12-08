@@ -26,6 +26,11 @@
                     <a href="{{ route('checklists.index') }}" class="text-pink-600 hover:text-pink-800 transition-colors">Checklists</a>
                     <a href="{{ route('wishlists.index') }}" class="text-pink-600 hover:text-pink-800 transition-colors">Lista de desejos</a>
                     <a href="{{ route('reminders.index') }}" class="text-pink-600 hover:text-pink-800 transition-colors">Lembretes</a>
+
+                    <form method="POST" action="{{ route('logout') }}">
+                        @csrf
+                        <button type="submit" class="border border-pink-600 rounded-md px-4 py-1 text-pink-600 hover:bg-pink-50 hover:text-pink-800 transition-colors font-bold text-sm">Sair</button>
+                    </form>
                 </div>
             </div>
         </div>
@@ -35,15 +40,12 @@
         <div class="flex justify-between items-center mb-8">
             <h1 class="text-2xl font-normal text-gray-900">Notas</h1>
             
-            <a href="{{ route('notes.create') }}" class="bg-pink-600 hover:bg-pink-700 text-white px-4 py-2 rounded shadow-sm hover:shadow transition-all text-sm font-medium">
-                + Nova nota
-            </a>
+            <a href="{{ route('notes.create') }}" class="bg-pink-600 hover:bg-pink-700 text-white px-4 py-2 rounded shadow-sm hover:shadow transition-all text-sm font-medium">+ Nova nota</a>
         </div>
 
         <div class="grid grid-cols-3 gap-6">
             @foreach($notes as $note)
-                <div class="bg-white border border-pink-300 rounded-lg p-5 shadow-sm h-48 flex flex-col relative overflow-hidden">
-                    
+                <div class="bg-white border border-pink-300 rounded-lg p-5 shadow-sm h-48 flex flex-col relative overflow-hidden">                    
                     <h3 class="text-lg font-semibold text-gray-900 truncate mb-2">
                         {{ $note->title }}
                     </h3>
