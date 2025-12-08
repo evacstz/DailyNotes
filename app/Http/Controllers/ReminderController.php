@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Reminder;
+use App\Http\Requests\ReminderRequest;
 use Illuminate\Http\Request;
 
 class ReminderController extends Controller
@@ -27,9 +28,9 @@ class ReminderController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(ReminderRequest $request)
     {
-        Reminder::create($request->all());
+        Reminder::create($request->validated());
         return redirect()->route('reminders.index');
     }
 
@@ -52,9 +53,9 @@ class ReminderController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Reminder $reminder)
+    public function update(ReminderRequest $request, Reminder $reminder)
     {
-        $reminder->update($request->all());
+        $reminder->update($request->validated());
         return redirect()->route('reminders.index', $reminder);
     }
 
